@@ -4,8 +4,6 @@
                             <small>Subheading</small>
                         </h1>
                         <?php
-
-                        
                         // $result = User::find_all_users();
                         // $rows = $result->fetchAll();
                         // foreach($rows as $row) {
@@ -17,6 +15,12 @@
                         // echo $user->password . "<br>";
                         // echo $user->first_name . "<br>";
                         // echo $user->last_name;
+                        // $users = User::find_all_users();
+                        // foreach($users as $user) {
+                        //     echo $user->id . "<br>";
+                        // }
+                        $found_user = User::find_users_From_ID(2);
+                        echo $found_user->username;
                         ?>
                         <ol class="breadcrumb">
                             <li>

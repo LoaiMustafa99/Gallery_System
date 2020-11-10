@@ -30,11 +30,6 @@ class Database {
             die("Query Field" . $this->con->error);
         }
     }
-    public function escape_string($string){
-        $escape_string = $this->con->real_escape_string($string);
-        return $escape_string;
-    }
-
     public function the_insert_id() {
         return $this->con->insert_id;
     }

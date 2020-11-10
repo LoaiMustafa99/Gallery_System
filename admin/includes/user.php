@@ -13,8 +13,8 @@ class User{
     }
     public static function find_users_From_ID($value){
         global $database;
-        $result_set = self::find_this_qyery("SELECT * FROM users WHERE id = $value LIMIT 1");
-        $row = $result_set->fetch();
+        $the_result_array = self::find_this_qyery("SELECT * FROM users WHERE id = $value LIMIT 1");
+        return !empty($the_result_array) ? array_shift($the_result_array) : false;
         return $row;
     }
 
@@ -38,7 +38,7 @@ class User{
         // $the_object->last_name    = $result['last_name'];
         foreach($the_record as $the_attribute => $value) {
             if($the_object->has_the_attribute($the_attribute)){
-                $the_object->the_attribute = $value;
+                $the_object->$the_attribute = $value;
             }
         }
         return $the_object;

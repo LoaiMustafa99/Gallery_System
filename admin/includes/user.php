@@ -18,6 +18,18 @@ class User{
         return $row;
     }
 
+    public static function verify_user($username, $password){
+        global $database;
+
+        $username = filter_var($username, FILTER_SANITIZE_STRING);
+        $password = filter_var($password, FILTER_SANITIZE_STRING);
+
+        $sql = "SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}' LIMIT 1";
+        $the_result_array = self::find_this_qyery($sql);
+        return !empty($the_result_array) ? array_shift($the_result_array) : false;
+
+    }
+
     public static function find_this_qyery($sql){
         global $database;
         $result_set = $database->query($sql);

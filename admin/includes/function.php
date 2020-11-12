@@ -33,5 +33,9 @@ if(file_exists($the_path)) {
 // spl_autoload_register("classAutoLoader");
 
 
+function redirect($location){
+    header("Location:" . $location);
+}
+
 
 ?>

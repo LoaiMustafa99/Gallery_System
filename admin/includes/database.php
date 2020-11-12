@@ -30,8 +30,8 @@ class Database {
             die("Query Field" . $this->con->error);
         }
     }
-    public function the_insert_id() {
-        return $this->con->insert_id;
-    }
+    // public function the_insert_id() {
+    //     return $this->con->insert_id;
+    // }
 }
 $database = new Database();

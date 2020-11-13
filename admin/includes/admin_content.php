@@ -4,23 +4,33 @@
                             <small>Subheading</small>
                         </h1>
                         <?php
-                        // $result = User::find_all_users();
-                        // $rows = $result->fetchAll();
-                        // foreach($rows as $row) {
-                        //     echo  . "<br>";
+                        
+                        
+                        // $user = new User(); 
+                        // $user->username = "Mustafa";
+                        // $user->password = "123123";
+                        // $user->first_name = "Mustafa";
+                        // $user->last_name = "Ahamad";
+                        // $user->create();
+
+                        // $user = User::find_users_From_ID(1);
+                        // $user->last_name = "Abd-alqader";
+
+                        // $user->update();
+
+                        // $user = User::find_users_From_ID(30);
+                        // $user->delete();
+
+                        $user = new User();
+                        $user->username = "NEW USER";
+                        $user->save();
+
+                        // $users = User::find_all();
+
+                        // foreach($users as $user){
+                        //     echo $user->username;
                         // }
-                        // $result = User::find_users_From_ID(1);
-                        // $user = User::instantation($result);
-                        // echo $user->username . "<br>";
-                        // echo $user->password . "<br>";
-                        // echo $user->first_name . "<br>";
-                        // echo $user->last_name;
-                        // $users = User::find_all_users();
-                        // foreach($users as $user) {
-                        //     echo $user->id . "<br>";
-                        // }
-                        $found_user = User::find_users_From_ID(2);
-                        echo $found_user->username;
+
                         ?>
                         <ol class="breadcrumb">
                             <li>

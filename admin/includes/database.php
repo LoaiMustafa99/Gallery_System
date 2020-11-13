@@ -11,7 +11,7 @@ class Database {
     // This Method use TO connect With Database
     public function open_db_connect(){
         try {
-            $this->con = new PDO(dsn, user, pass);
+            $this->con = new PDO(dsn, user, pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',));
             $this->con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
     
@@ -22,7 +22,7 @@ class Database {
     // This Method Use To Execute the query Statment 
     public function query($sql,$value = NULL){
         $result = $this->con->prepare($sql);
-        $result->execute();
+        $result->execute($value);
         return $result;
     }
     private function config_query($result){
@@ -30,8 +30,8 @@ class Database {
             die("Query Field" . $this->con->error);
         }
     }
-    // public function the_insert_id() {
-    //     return $this->con->insert_id;
-    // }
+    public function the_insert_id() {
+        return $this->con->lastInsertId();
+    }
 }
 $database = new Database();

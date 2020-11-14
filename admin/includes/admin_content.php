@@ -21,15 +21,23 @@
                         // $user = User::find_users_From_ID(30);
                         // $user->delete();
 
-                        $user = new User();
-                        $user->username = "NEW USER";
-                        $user->save();
+                        // $user = new User();
+                        // $user->username = "NEW USER";
+                        // $user->save();
 
-                        // $users = User::find_all();
+                        // $photos = Photo::find_all();
 
-                        // foreach($users as $user){
-                        //     echo $user->username;
+                        // foreach($photos as $photo){
+                        //     echo $photo->title;
                         // }
+                        // $photo = new Photo(); 
+                        // $photo->title = "Just Some Test";
+                        // $photo->size = 20;
+                        // $photo->create();
+
+                        echo SITE_ROOT . "<br>";
+
+                        echo INCLUDES_PATH;
 
                         ?>
                         <ol class="breadcrumb">

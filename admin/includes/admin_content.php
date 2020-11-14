@@ -4,7 +4,10 @@
                             <small>Subheading</small>
                         </h1>
                         <?php
-                        
+
+                        $user = User::find_by_id(2);
+
+                        echo $user->username;
                         
                         // $user = new User(); 
                         // $user->username = "Mustafa";

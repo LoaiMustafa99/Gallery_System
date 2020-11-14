@@ -13,7 +13,6 @@ $photos = Photo::find_all();
             
             <?php include("includes/top_nav.php");?>
 
-
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <?php include("includes/side_nav.php"); ?>
             <!-- /.navbar-collapse -->
@@ -44,8 +43,14 @@ $photos = Photo::find_all();
                                 <tbody>
                         <?php foreach($photos as $photo) : ?>
                                     <tr>
-                                        <td><img src="<?php echo $photo->photo_path(); ?>" alt=""></td>
-                                        <td><?php echo $photo->photo_id; ?></td>
+                                        <td><img class="admin-photo-thumbnail" src="<?php echo $photo->photo_path(); ?>" alt="">
+                                        <div class="pictures_link">
+                                            <a class="btn btn-danger" href="delete_photo.php?id=<?php echo $photo->id; ?>">Delete</a>
+                                            <a class="btn btn-primary" href="edit_photo.php?id=<?php echo $photo->id; ?>">Edit</a>
+                                            <a class="btn btn-success" href="#">View</a>
+                                        </div>
+                                    </td>
+                                        <td><?php echo $photo->id; ?></td>
                                         <td><?php echo $photo->filename; ?></td>
                                         <td><?php echo $photo->title; ?></td>
                                         <td><?php echo $photo->size; ?></td>

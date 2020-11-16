@@ -3,37 +3,24 @@
 
 <?php
 
-$user = new User();
-if(isset($_POST['create'])) {
-    if($user){
-
-        $user->username         = $_POST['username'];
-        $user->first_name       = $_POST['first_name'];
-        $user->last_name        = $_POST['last_name'];
-        $user->password         = $_POST['password'];
-
-        if($_FILES['user_image']){
-            $user->save();
-        }else{
-        $user->set_file($_FILES['user_image']);
-        $user->upload_photo();
-        $user->save();
-        redirect("edit_user.php?id={$user->id}");
-        }
-    }
-//     if($user) {
-//             $user->title           = $_POST['title'];
-//             $user->caption         = $_POST['caption'];
-//             $user->alternate_text  = $_POST['alternate_text'];
-//             $user->description     = $_POST['description'];
-
-//             $user->save();
-
-//         }
+if(empty($_GET['id'])){
+    redirect("users.php");
 }
 
+$user = User::find_by_id($_GET['id']);
 
-// $users = user::find_all();
+if(isset($_POST['update'])) {
+    if($user){
+        $user->username         = $_POST['username'];
+        $user->first_name       =$_POST['first_name'];
+        $user->last_name        =$_POST['last_name'];
+        $user->password         =$_POST['password'];
+
+        $user->set_file($_FILES['user_image']);
+        $user->save();
+        $user->upload_photo();
+    }
+}
 
 ?>
 
@@ -60,29 +47,33 @@ if(isset($_POST['create'])) {
                             users
                             <small>Subheading</small>
                         </h1>
+                        <div class="col-md-6">
+                            <img class="img-responsive" src="<?php echo $user->user_image_placehold() ?>" alt="">
+                        </div>
                         <form  method="post" enctype="multipart/form-data">
-                            <div class="col-md-6 col-md-offset-3">
+                            <div class="col-md-6">
                             <div class="form-group">
                                     <input type="file" name="user_image">
                                 </div>
                                 <div class="form-group">
-                                    <label for="username">Username</label>
-                                    <input type="text" name="username" class="form-control">
+                                    <label for="username">Username</label >
+                                    <input type="text" name="username" class="form-control" value="<?php echo $user->username; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="first name">First Name</label>
-                                    <input type="text" name="first_name" class="form-control">
+                                    <input type="text" name="first_name" class="form-control" value="<?php echo $user->first_name; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="last name">Last Name</label>
-                                    <input type="text" name="last_name" class="form-control">
+                                    <input type="text" name="last_name" class="form-control" value="<?php echo $user->last_name; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="password" name="password" class="form-control">
+                                    <input type="password" name="password" class="form-control" value="<?php echo $user->password; ?>">
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" name="create" class="form-control btn btn-primary" value="Create">
+                                    <input type="submit" name="update" class="form-control btn btn-primary" value="Save">
+                                    <a class="form-control btn btn-danger delete" href="delete_user.php?id=<?php echo $user->id; ?>">Delete</a>
                                 </div>
                             </div>
                         </form>

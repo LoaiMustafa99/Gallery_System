@@ -13,7 +13,7 @@ if(empty($_GET['id'])){
                 $photo->title           = $_POST['title'];
                 $photo->caption         = $_POST['caption'];
                 $photo->alternate_text  = $_POST['alternate_text'];
-                $photo->description     = $_POST['description'];
+                $photo->description     = filter_var($_POST['description'], FILTER_SANITIZE_STRING);
 
                 $photo->save();
 

@@ -5,10 +5,8 @@
                         </h1>
                         <?php
 
-                        $user = User::find_by_id(2);
-
+                        $user = User::find_by_id(1);
                         echo $user->username;
-                        
                         // $user = new User(); 
                         // $user->username = "Mustafa";
                         // $user->password = "123123";

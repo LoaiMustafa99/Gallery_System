@@ -3,6 +3,17 @@
 
 class Db_object {
 
+    public $upload_erroes_array = array(
+        UPLOAD_ERR_OK           => "There is no error",
+        UPLOAD_ERR_INI_SIZE     => "The uploaded file exceeds the upload_max_filesize directive",
+        UPLOAD_ERR_FORM_SIZE    => "The uploaded file exceeds the max_FILE_SIZE directive that",
+        UPLOAD_ERR_PARTIAL      => "The upload file was only partially uploaded.",
+        UPLOAD_ERR_NO_FILE      => "No file was uploaded.",
+        UPLOAD_ERR_NO_TMP_DIR   => "Missing a temporary folder.",
+        UPLOAD_ERR_CANT_WRITE   => "Failed to write file to disk.",
+        UPLOAD_ERR_EXTENSION    => "A PHP extension stopped the file upload."
+    );
+
     public static function find_all(){
         return static::find_by_qyery("SELECT * FROM " . static::$db_table . " ");
     }
@@ -89,6 +100,7 @@ class Db_object {
         $properties = $this->properties();
 
         $properties_paris = array();
+
 
         foreach($properties as $key => $value) {
             $properties_paris[] = "{$key}='{$value}'";

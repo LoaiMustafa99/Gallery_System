@@ -50,7 +50,7 @@ if(isset($_POST['submit'])) {
                             <div class="form-group">
                                 <input type="file" name="file_upload" class="form-control">
                             </div>
-                            <input type="submit" name="submit">
+                            <input class="btn btn-primary" type="submit" name="submit">
 
                         </form>
                     </div>

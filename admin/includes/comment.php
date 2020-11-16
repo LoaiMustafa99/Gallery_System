@@ -24,18 +24,18 @@ class Comment extends Db_object{
         }else{
             return false;
         }
-
+    }
         public static function find_the_comments($photo_id=0){
 
-            $sql = "SELECT * FROM " . $db_table;
-            $sql.= " WHERE photo_id " . $photo_id;
-            $sql.= " ORDER BY photo_id ASC";
+            $sql  = "SELECT * FROM " . self::$db_table;
+            $sql .= " WHERE photo_id= " . $photo_id;
+            $sql .= " ORDER BY photo_id ASC";
 
             return self::find_by_qyery($sql);
 
         }
 
-    }
+    
 
 
 }

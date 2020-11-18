@@ -122,6 +122,14 @@ class Db_object {
         return ($stat->rowCount()) ? true : false;
     }
 
+    public static function count_all() {
+        global $database;
+        $sql = "SELECT COUNT(*) FROM " . static::$db_table;
+        $result_set = $database->query($sql);
+        $row = $result_set->fetch();
+        return (int)array_shift($row);
+    }
+
 }
 
 

@@ -24,7 +24,7 @@ if(isset($_POST['submit'])){
 $comments = Comment::find_the_comments($photo->id);
 
 ?>
-
+        <div class="row">
             <div class="col-lg-12">
 
                 <!-- Blog Post -->
@@ -100,5 +100,6 @@ $comments = Comment::find_the_comments($photo->id);
 
 <!-- </div> -->
 <!-- /.row -->
+</div>
 
 <?php include("includes/footer.php"); ?>

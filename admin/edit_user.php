@@ -1,4 +1,5 @@
 <?php include("includes/header.php"); ?>
+<?php include("includes/photo_library_modal.php"); ?>
 <?php if(!$session->is_signed_in()){redirect("login.php");} ?>
 
 <?php
@@ -48,7 +49,7 @@ if(isset($_POST['update'])) {
                             <small>Subheading</small>
                         </h1>
                         <div class="col-md-6">
-                            <img class="img-responsive" src="<?php echo $user->user_image_placehold() ?>" alt="">
+                            <a href="#" data-toggle="modal" data-target="#photo-library"><img class="img-responsive" src="<?php echo $user->user_image_placehold() ?>" alt=""></a>
                         </div>
                         <form  method="post" enctype="multipart/form-data">
                             <div class="col-md-6">
@@ -72,8 +73,8 @@ if(isset($_POST['update'])) {
                                     <input type="password" name="password" class="form-control" value="<?php echo $user->password; ?>">
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" name="update" class="form-control btn btn-primary" value="Save">
-                                    <a class="form-control btn btn-danger delete" href="delete_user.php?id=<?php echo $user->id; ?>">Delete</a>
+                                    <input  type="submit" name="update" class="form-control btn btn-primary" value="Save">
+                                    <a id="user-id" class="form-control btn btn-danger delete" href="delete_user.php?id=<?php echo $user->id; ?>">Delete</a>
                                 </div>
                             </div>
                         </form>

@@ -1,3 +1,4 @@
+
 .admin-photo-thumbnail{
     width: 200px;
     border-radius: 5px;
@@ -63,4 +64,8 @@ padding: 10px;
     }
     #modal_sidebar {
     position: fixed !important;
+    }
+    /***************Login Page********************/
+    #login_id{
+        color: #FFF;
     }

@@ -28,6 +28,9 @@ $users = User::find_all();
                         <h1 class="page-header">
                             Users
                         </h1>
+                        <p class="bg-danger">
+                        <?php echo $message; ?>
+                        </p>
                         <a href="add_user.php" class="btn btn-primary">Add User</a>
                         <div class="col-md-12">
                             <table class="table table-hover">
@@ -47,7 +50,7 @@ $users = User::find_all();
                                         <td><img class="admin-user-thumbnail user-image" src="<?php echo $user->user_image_placehold(); ?>" alt=""></td>
                                         <td><?php echo $user->username; ?>
                                             <div class="action_link">
-                                                <a class="btn btn-danger" href="delete_user.php?id=<?php echo $user->id; ?>">Delete</a>
+                                                <a class="btn btn-danger delete-link" href="delete_user.php?id=<?php echo $user->id; ?>">Delete</a>
                                                 <a class="btn btn-primary" href="edit_user.php?id=<?php echo $user->id; ?>">Edit</a>
                                                 
                                             </div>

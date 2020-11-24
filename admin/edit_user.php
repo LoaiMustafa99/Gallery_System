@@ -16,10 +16,15 @@ if(isset($_POST['update'])) {
         $user->first_name       =$_POST['first_name'];
         $user->last_name        =$_POST['last_name'];
         $user->password         =$_POST['password'];
-
+        if(empty($_FILES['user_image'])){
+            $user->save();
+            redirect("users.php");
+        }else{
         $user->set_file($_FILES['user_image']);
-        $user->save();
         $user->upload_photo();
+        $user->save();
+        // redirect("edit_user.php?id={$user->id}");
+        }
     }
 }
 
@@ -48,7 +53,7 @@ if(isset($_POST['update'])) {
                             users
                             <small>Subheading</small>
                         </h1>
-                        <div class="col-md-6">
+                        <div class="col-md-6 user_image_box">
                             <a href="#" data-toggle="modal" data-target="#photo-library"><img class="img-responsive" src="<?php echo $user->user_image_placehold() ?>" alt=""></a>
                         </div>
                         <form  method="post" enctype="multipart/form-data">

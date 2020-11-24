@@ -17,8 +17,9 @@ if(isset($_POST['create'])) {
         }else{
         $user->set_file($_FILES['user_image']);
         $user->upload_photo();
+        $session->message("The {$user->username} has been added");
         $user->save();
-        redirect("edit_user.php?id={$user->id}");
+        redirect("users.php");
         }
     }
 //     if($user) {
